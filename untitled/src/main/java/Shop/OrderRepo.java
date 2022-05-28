@@ -5,11 +5,9 @@ import java.util.List;
 
 public class OrderRepo {
 
-   private HashMap<String,Order> allMyOrders;
+   private HashMap<String,Order> allMyOrders = new HashMap<>();
 
-    public OrderRepo(HashMap<String, Order> allMyOrders) {
-        this.allMyOrders = allMyOrders;
-    }
+
 
     public void add(Order order) {
         allMyOrders.put(order.getOrderID(),order);

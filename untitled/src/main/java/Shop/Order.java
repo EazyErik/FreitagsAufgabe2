@@ -20,5 +20,8 @@ public class Order {
         return product;
     }
 
-
+    @Override
+    public String toString() {
+        return product.getName();
+    }
 }
