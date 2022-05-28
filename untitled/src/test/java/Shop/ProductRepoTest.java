@@ -1,0 +1,7 @@
+package Shop;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class ProductRepoTest {
+
+}
