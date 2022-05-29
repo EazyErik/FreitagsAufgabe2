@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,11 +14,12 @@ class OrderRepoTest {
     void shouldReturnTrueIfMapIsNotEmpty() {
         //given
         OrderRepo orderRepo = new OrderRepo();
-        HashMap<String,Product> testMap = new HashMap<>();
+
         String expected = "Pringles";
+        Product product = new Product(expected);
 
         //when
-        orderRepo.add(new Order(new Product("Pringles")));
+        orderRepo.addOrder(List.of(product));
 
 
         //then

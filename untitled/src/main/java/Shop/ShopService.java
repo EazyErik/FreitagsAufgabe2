@@ -27,12 +27,12 @@ public class ShopService {
        return productRepo.list();
 
     }
-    public void addOrder(List<String> orderIDs) {
+    public void addOrder(List<String> productIDs) {
         List<Product> validProducts = new ArrayList<>();
-        for(String orderID : orderIDs) {
-            Optional<Product> productToCheck = productRepo.getProductByID(orderID);
+        for(String productID : productIDs) {
+            Optional<Product> productToCheck = productRepo.getProductByID(productID);
             if(productToCheck.isEmpty()) {
-                throw new RuntimeException("No such orderID " + orderID);
+                throw new RuntimeException("No such productID: " + productID);
             }
             validProducts.add(productToCheck.get());
         }

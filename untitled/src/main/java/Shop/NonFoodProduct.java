@@ -2,10 +2,10 @@ package Shop;
 
 import java.util.UUID;
 
-public class NonFoodProducts extends Product implements ProductInterface {
+public class NonFoodProduct extends Product implements ProductInterface {
 
 
-    public NonFoodProducts(String name) {
+    public NonFoodProduct(String name) {
         super(name);
     }
 

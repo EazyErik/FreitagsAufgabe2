@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -48,8 +50,34 @@ class ShopServiceTest {
             Assertions.assertNotEquals(expected, actual);
         } catch (RuntimeException e) {
             System.out.println("ProductID does not exist");
-            ;
+
         }
+
+    }
+
+    @Test
+    void shouldPassIfOrdersAreValid() {
+        //given
+        ShopService testShopService = new ShopService(new ProductRepo(),new OrderRepo());
+        ProductRepo productRepo;
+
+
+
+        //when
+
+
+       Product product1 = new Product("shirt");
+
+
+       testShopService.addOrder(List.of(product1.getId()));
+       //then
+        Assertions.assertEquals(1,testShopService.listOrders().size());
+
+
+
+
+
+
 
     }
 

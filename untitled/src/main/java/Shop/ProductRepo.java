@@ -12,9 +12,11 @@ public class ProductRepo {
         Product product = new Product("Käse");
         Product product2 = new Product("Apfel");
         Product product3 = new Product("Banane");
+
         allMyProducts.put(product.getId(), product);
         allMyProducts.put(product2.getId(), product2);
         allMyProducts.put(product3.getId(), product3);
+
 
 
     }
