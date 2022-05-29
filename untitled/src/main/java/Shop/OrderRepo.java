@@ -2,24 +2,27 @@ package Shop;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 public class OrderRepo {
 
-   private HashMap<String,Order> allMyOrders = new HashMap<>();
+    private HashMap<String, Order> allMyOrders = new HashMap<>();
 
 
+    void addOrder(List<Product> listOfProducts) {
+     for (Product product : listOfProducts) {
+         allMyOrders.put(product.getId(),new Order(product));
+     }
 
-    public void add(Order order) {
-        allMyOrders.put(order.getOrderID(),order);
 
     }
 
-    public Order get(String id) {
-        return allMyOrders.get(id);
+    Optional<Order> get(String id) {
+        return Optional.ofNullable(allMyOrders.get(id));
 
     }
 
-    public List<Order>list() {
+    List<Order> list() {
         return allMyOrders.values().stream().toList();
     }
 }

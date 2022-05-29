@@ -1,5 +1,9 @@
 package Shop;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 public class ShopService {
 
     private ProductRepo productRepo;
@@ -10,9 +14,45 @@ public class ShopService {
         this.orderRepo = orderRepo;
     }
 
-    public Product getProduct(String productID) {
-        return productRepo.get(productID);
+    public Optional<Product> getProduct(String productID) {
+
+            Optional<Product> currentProduct = productRepo.getProductByID(productID);
+            if( currentProduct == null) {
+            throw new RuntimeException("Product with this id: " + productID + " is not available");
+        }
+            return currentProduct;
     }
+
+    public List<Product> listProducts() {
+       return productRepo.list();
+
+    }
+    public void addOrder(List<String> orderIDs) {
+        List<Product> validProducts = new ArrayList<>();
+        for(String orderID : orderIDs) {
+            Optional<Product> productToCheck = productRepo.getProductByID(orderID);
+            if(productToCheck.isEmpty()) {
+                throw new RuntimeException("No such orderID " + orderID);
+            }
+            validProducts.add(productToCheck.get());
+        }
+
+        orderRepo.addOrder(validProducts);
+    }
+    public Order getOrder(String id) {
+        Optional<Order> currentOrder = orderRepo.get(id);
+        return currentOrder.orElseThrow(() -> new RuntimeException("There is no order with " + id));
+
+
+
+
+    }
+    public List<Order> listOrders() {
+        return orderRepo.list();
+    }
+
+
+
 
 
 }

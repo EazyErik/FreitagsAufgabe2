@@ -22,5 +22,8 @@ public class Product {
         return productID;
     }
 
-
+    @Override
+    public String toString() {
+        return name;
+    }
 }
