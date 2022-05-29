@@ -44,8 +44,6 @@ public class ShopService {
         return currentOrder.orElseThrow(() -> new RuntimeException("There is no order with " + id));
 
 
-
-
     }
     public List<Order> listOrders() {
         return orderRepo.list();
