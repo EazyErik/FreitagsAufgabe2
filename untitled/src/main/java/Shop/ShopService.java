@@ -17,13 +17,13 @@ public class ShopService {
     public Optional<Product> getProduct(String productID) {
 
             Optional<Product> currentProduct = productRepo.getProductByID(productID);
-            if( currentProduct == null) {
+            if(currentProduct.isEmpty()) {
             throw new RuntimeException("Product with this id: " + productID + " is not available");
         }
             return currentProduct;
     }
 
-    public List<Product> listProducts() {
+    public List<Product>listProducts() {
        return productRepo.list();
 
     }
@@ -32,7 +32,7 @@ public class ShopService {
         for(String productID : productIDs) {
             Optional<Product> productToCheck = productRepo.getProductByID(productID);
             if(productToCheck.isEmpty()) {
-                throw new RuntimeException("No such productID: " + productID);
+                throw new RuntimeException("No such productID");
             }
             validProducts.add(productToCheck.get());
         }
@@ -48,9 +48,5 @@ public class ShopService {
     public List<Order> listOrders() {
         return orderRepo.list();
     }
-
-
-
-
 
 }

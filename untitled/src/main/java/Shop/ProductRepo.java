@@ -21,7 +21,7 @@ public class ProductRepo {
 
     }
 
-    List<Product> list() {
+        List<Product>list() {
         return allMyProducts.values().stream().toList();
 
 

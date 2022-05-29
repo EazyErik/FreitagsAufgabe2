@@ -14,16 +14,17 @@ class OrderRepoTest {
     void shouldReturnTrueIfMapIsNotEmpty() {
         //given
         OrderRepo orderRepo = new OrderRepo();
+        ProductRepo productRepo = new ProductRepo();
 
-        String expected = "Pringles";
-        Product product = new Product(expected);
+        Product expected = productRepo.list().get(0);
+
 
         //when
-        orderRepo.addOrder(List.of(product));
-
+        orderRepo.addOrder(List.of(expected));
 
         //then
-        Assertions.assertEquals(expected,orderRepo.list().get(0).toString());
+        Assertions.assertEquals(expected,orderRepo.list().get(0).getProduct());
+
 
 
 
