@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,20 +25,20 @@ class ShopServiceTest {
 
     }
 
-//    @Test
-//    void shouldCheckIfProductIdExists() {
-//        //given
-//        ShopService testShopService = new ShopService(new ProductRepo(), new OrderRepo());
-//        Product expected = testShopService.listProducts().get(0);
-//        //when
-//
-//        Optional actual = testShopService.getProduct(expected.getId());
-//        //then
-//        Assertions.assertTrue(expected,actual);
-//
-    //          TODO Test did not pass
-//
-//    }
+    @Test
+    void shouldCheckIfProductIdExists() {
+        //given
+        ShopService testShopService = new ShopService(new ProductRepo(), new OrderRepo());
+        Product expected = testShopService.listProducts().get(0);
+        //when
+
+        Optional<Product> actual = testShopService.getProduct(expected.getId());
+        //then
+        Assertions.assertEquals(expected,actual.get());
+
+
+
+    }
 
     @Test
     void shouldThrowCustomExceptionIfProductIdDoesNotExist() {
@@ -93,7 +92,7 @@ class ShopServiceTest {
             shopService.addOrder(List.of(unknownProduct));
             fail();
         }catch(RuntimeException e){
-            e.getMessage();
+
         }
     }
 

@@ -19,14 +19,15 @@ public class ShopService {
             Optional<Product> currentProduct = productRepo.getProductByID(productID);
             if(currentProduct.isEmpty()) {
             throw new RuntimeException("Product with this id: " + productID + " is not available");
-        }
-            return currentProduct;
+            }
+        return currentProduct;
     }
 
-    public List<Product>listProducts() {
-       return productRepo.list();
+    public List<Product> listProducts() {
+        return productRepo.list();
 
     }
+
     public void addOrder(List<String> productIDs) {
         List<Product> validProducts = new ArrayList<>();
         for(String productID : productIDs) {
